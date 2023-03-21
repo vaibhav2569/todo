@@ -9,7 +9,9 @@
             <h3>Add Item</h3>
             <p>
                 <input id="new-task" type="text"><button id="new-task-btn" onclick="addNewTask()">Add</button>
-                <input id="new-task1" type="text"><button id="edit-task-btn" onclick="addNewTask()">Update</button>
+                <span id="err_input"></span>
+                <input id="edit-task" type="text"><button id="edit-task-btn" onclick="updateEdit()" >Update</button>
+               
             </p>
     
             <h3>Todo</h3>
@@ -19,7 +21,7 @@
     
             <h3>Completed</h3>
             <ul id="completed-tasks">
-                <li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+               
             </ul>
         </div>
     <script src="../script.js"></script>

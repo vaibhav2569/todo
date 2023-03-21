@@ -100,9 +100,12 @@ input#new-task {
 	float: left;
 	width: 318px;
 }
-input#new-task1 {
+input#edit-task {
 	float: left;
 	width: 318px;
+	display: none;
+}
+#edit-task-btn{
 	display: none;
 }
 
