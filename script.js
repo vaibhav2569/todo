@@ -9,24 +9,19 @@ function addNewTask() {
   arr.push({ checkbox: "false", item: item });
    todo_item=display(arr, "");
   document.getElementById("incomplete-tasks").innerHTML=todo_item;
-
-  
 }
 // display todo
 function display(arr, html) {
   arr.map((e,index) => {
     html += `<li><input id="todoinput" onclick='checkboxval(${index})' type="checkbox" value='${e.checkbox}'><label>${e.item}</label><input id="inputforEdit${index}" type="text"><button id='${index}' onclick='edit(${index})' class="edit">Edit</button><button id='${index}' onclick='delte(${index})' class="delete">Delete</button></li>`;
   });
-  
   return html;
 }
 // funtion to edit todo
 function edit(index){
-    // debugger;
     document.getElementById("new-task-btn").style.display="none";
     document.getElementById("edit-task-btn").style.display="block";
-    idx=index;
-    console.log(idx); 
+    idx=index; 
 }
 // function for validation
 function validation(inputText,msgId)
@@ -49,42 +44,31 @@ function cleardata(){
 }
 // delete todo
 function delte(index){
-  
   let tbledata = "";
-  console.log(index);
   var filt = arr.filter((e, i) => {
     if (index == i) {
       arr.splice(i, 1);
       tbledata = display(arr, "");
     }
   });
-  
   document.getElementById("incomplete-tasks").innerHTML=tbledata;
 }
 // update todo
 function updateEdit(){
-
-  let todoitem=document.getElementById("new-task").value;
-  
-    
+let todoitem=document.getElementById("new-task").value; 
 if(validation(todoitem,"err_input")){cleardata(); return};
     let lstdata = "";
     let filt = [];
     arr.map((e, i) => {
-
       if (idx == i) {
-        
         filt.push({ checkbox: "false",item:todoitem});
       }
     });
-    
     filt.map((e) => (arr[idx] = e));
-    console.log(arr);
     lstdata = display(arr, "");
     document.getElementById("incomplete-tasks").innerHTML=lstdata;
     document.getElementById("new-task-btn").style.display="block";
     document.getElementById("edit-task-btn").style.display="none";
-
 }
 // function to check if todolist checkbox is clicked
 function checkboxval(index){
@@ -106,9 +90,6 @@ document.getElementById("incomplete-tasks").innerHTML=arrAfterRemove;
 let html=displayCompleted(completedArr,"");
 document.getElementById("completed-tasks").innerHTML=html;
 }
-
-
-
 }
 // function to display completed tasks
 function displayCompleted(comparr,html){
@@ -121,14 +102,12 @@ function displayCompleted(comparr,html){
 function delte2(index)
 {
   let tbledata = "";
-  console.log(index);
   var filt = completedArr.filter((e, i) => {
     if (index == i) {
       completedArr.splice(i, 1);
       tbledata = displayCompleted(completedArr, "");
     }
   });
-  
   document.getElementById("completed-tasks").innerHTML=tbledata;
 }
 // function to check if completed tasks checkbox is clicked
@@ -153,36 +132,26 @@ function delte2(index)
  }
  // funtion to edit completd-todo
 function edit2(index){
-  // debugger;
   document.getElementById("new-task-btn").style.display="none";
   document.getElementById("edit-task-btn2").style.display="block";
   idx=index;
-  console.log(idx); 
 }
 // update completetodo
 function updateEdit2(){
-
-  let todoitem=document.getElementById("new-task").value;
-  
-    
+let todoitem=document.getElementById("new-task").value; 
 if(validation(todoitem,"err_input")){cleardata(); return};
     let lstdata = "";
     let filt = [];
     completedArr.map((e, i) => {
-
-      if (idx == i) {
-        
+      if (idx == i) {  
         filt.push({ checkbox: "true",item:todoitem});
       }
     });
-    
     filt.map((e) => (completedArr[idx] = e));
-    
     lstdata = displayCompleted(completedArr, "");
     document.getElementById("completed-tasks").innerHTML=lstdata;
     document.getElementById("new-task-btn").style.display="block";
     document.getElementById("edit-task-btn2").style.display="none";
-
 }
 
 
