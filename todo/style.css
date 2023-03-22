@@ -4,22 +4,22 @@ body {
 	background: #fff;
 	color: #333;
 	font-family: Lato, sans-serif;
-	background-color:#e4e4e4;
+	background-color: #e4e4e4;
 }
 
 .container {
 	display: block;
 	width: 400px;
 	margin: 10px auto 100px;
-	background-color:#fff;
-	padding:0px 10px 10px 10px;
-	border-radius:10px
+	background-color: #fff;
+	padding: 0px 10px 10px 10px;
+	border-radius: 10px
 }
 
 h2 {
-	text-align:center;
-	padding-top:10px;
-	margin-bottom:0px;
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 0px;
 }
 
 ul {
@@ -100,22 +100,35 @@ input#new-task {
 	float: left;
 	width: 318px;
 }
+/* update btn on todo */
 input#edit-task {
 	float: left;
 	width: 318px;
 	display: none;
 }
-#edit-task-btn{
+/* update btn on completed todo */
+input#edit-task2 {
+	float: left;
+	width: 318px;
+	display: none;
+}
+/* update btn content is hidden for todo */
+#edit-task-btn {
+	display: none;
+}
+/* update btn content is hidden for completed todo */
+#edit-task-btn2 {
 	display: none;
 }
 
 
 
-#edit-task-btn{
+
+#edit-task-btn {
 	display: none;
 }
 
-p > button:hover {
+p>button:hover {
 	color: #0FC57C;
 }
 
@@ -128,24 +141,24 @@ li {
 	border-bottom: 1px solid #eee;
 }
 
-li > input[type="checkbox"] {
+li>input[type="checkbox"] {
 	margin: 0 10px;
 	position: relative;
 	top: 15px;
 }
 
-li > label {
+li>label {
 	font-size: 18px;
 	line-height: 40px;
 	width: 237px;
 	padding: 0 0 0 11px;
 }
 
-li > input[type="text"] {
+li>input[type="text"] {
 	width: 226px;
 }
 
-li > .delete:hover {
+li>.delete:hover {
 	color: #CF2323;
 }
 

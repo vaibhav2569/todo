@@ -20,13 +20,15 @@ function display(arr, html) {
   
   return html;
 }
-
+// funtion to edit todo
 function edit(index){
     // debugger;
     document.getElementById("new-task-btn").style.display="none";
     document.getElementById("edit-task-btn").style.display="block";
-    idx=index; 
+    idx=index;
+    console.log(idx); 
 }
+// function for validation
 function validation(inputText,msgId)
 {
   if (inputText == "" || inputText < 0) {
@@ -41,9 +43,11 @@ function validation(inputText,msgId)
     return 0;
   }
 }
+// clearing input after each submission
 function cleardata(){
   document.getElementById("new-task").value="";
 }
+// delete todo
 function delte(index){
   
   let tbledata = "";
@@ -57,16 +61,19 @@ function delte(index){
   
   document.getElementById("incomplete-tasks").innerHTML=tbledata;
 }
+// update todo
 function updateEdit(){
 
   let todoitem=document.getElementById("new-task").value;
-    console.log(todoitem);
+  
     
 if(validation(todoitem,"err_input")){cleardata(); return};
     let lstdata = "";
     let filt = [];
     arr.map((e, i) => {
+
       if (idx == i) {
+        
         filt.push({ checkbox: "false",item:todoitem});
       }
     });
@@ -79,6 +86,7 @@ if(validation(todoitem,"err_input")){cleardata(); return};
     document.getElementById("edit-task-btn").style.display="none";
 
 }
+// function to check if todolist checkbox is clicked
 function checkboxval(index){
   // bydefault checkbox-val is false  , if checkboxval is getting called it means checkbox is clicked
 let val=document.getElementById("todoinput").value;
@@ -98,33 +106,18 @@ document.getElementById("incomplete-tasks").innerHTML=arrAfterRemove;
 let html=displayCompleted(completedArr,"");
 document.getElementById("completed-tasks").innerHTML=html;
 }
-else if(val=='true')
-{
-  arr.map((e,i)=>{
-    if(i==index)
-    {
-      arr.push({checkbox:"false",item:e.item});
-      delte2(index);
-    }
-  }) 
-  // gone from completed
-  let compArr_afterRemove=displayCompleted(completedArr,"");
-  document.getElementById("completed-tasks").innerHTML=compArr_afterRemove;
-  // come to todo
-  let cumtodo=display(arr,"");
-  document.getElementById("incomplete-tasks").innerHTML=cumtodo;
+
 
 
 }
-
-
-}
+// function to display completed tasks
 function displayCompleted(comparr,html){
-  comparr.map((e)=>{
-    html+=` <li><input type="checkbox" checked><label>${e.item}</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>`
+  comparr.map((e,index)=>{
+    html+=` <li><input id='completedWork' onclick='checkboxval2(${index})' value='${e.checkbox}' type="checkbox" checked><label>${e.item}</label><input type="text"><button onclick='edit2(${index})' class="edit">Edit</button><button onclick='delte2(${index})' class="delete">Delete</button></li>`
   })
   return html;
 }
+// function to delete  completed tasks
 function delte2(index)
 {
   let tbledata = "";
@@ -138,6 +131,61 @@ function delte2(index)
   
   document.getElementById("completed-tasks").innerHTML=tbledata;
 }
+// function to check if completed tasks checkbox is clicked
+ function checkboxval2(index){
+  let val=document.getElementById("completedWork").value;
+   if(val=='true')
+{
+  completedArr.map((e,i)=>{
+    if(i==index)
+    {
+      arr.push({checkbox:"false",item:e.item});
+      delte2(index);
+    }
+  }) 
+  // gone from completed
+  let compArr_afterRemove=displayCompleted(completedArr,"");
+  document.getElementById("completed-tasks").innerHTML=compArr_afterRemove;
+  // come to todo
+  let cumtodo=display(arr,"");
+  document.getElementById("incomplete-tasks").innerHTML=cumtodo;
+}
+ }
+ // funtion to edit completd-todo
+function edit2(index){
+  // debugger;
+  document.getElementById("new-task-btn").style.display="none";
+  document.getElementById("edit-task-btn2").style.display="block";
+  idx=index;
+  console.log(idx); 
+}
+// update completetodo
+function updateEdit2(){
+
+  let todoitem=document.getElementById("new-task").value;
+  
+    
+if(validation(todoitem,"err_input")){cleardata(); return};
+    let lstdata = "";
+    let filt = [];
+    completedArr.map((e, i) => {
+
+      if (idx == i) {
+        
+        filt.push({ checkbox: "true",item:todoitem});
+      }
+    });
+    
+    filt.map((e) => (completedArr[idx] = e));
+    
+    lstdata = displayCompleted(completedArr, "");
+    document.getElementById("completed-tasks").innerHTML=lstdata;
+    document.getElementById("new-task-btn").style.display="block";
+    document.getElementById("edit-task-btn2").style.display="none";
+
+}
+
+
 
 
 
