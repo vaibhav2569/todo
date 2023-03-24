@@ -19,6 +19,7 @@ function display(arr, html) {
 }
 // funtion to edit todo
 function edit(index){
+  document.getElementById("new-task").value=arr[index].item;
     document.getElementById("new-task-btn").style.display="none";
     document.getElementById("edit-task-btn").style.display="block";
     idx=index; 
@@ -55,7 +56,9 @@ function delte(index){
 }
 // update todo
 function updateEdit(){
+  // document.getElementById("edit-task")
 let todoitem=document.getElementById("new-task").value; 
+console.log(todoitem);
 if(validation(todoitem,"err_input")){cleardata(); return};
     let lstdata = "";
     let filt = [];
