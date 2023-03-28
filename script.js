@@ -22,6 +22,7 @@ function edit(index){
   document.getElementById("new-task").value=arr[index].item;
     document.getElementById("new-task-btn").style.display="none";
     document.getElementById("edit-task-btn").style.display="block";
+    document.getElementById("edit-task-btn2").style.display="none";
     idx=index; 
 }
 // function for validation
@@ -135,6 +136,7 @@ function delte2(index)
  }
  // funtion to edit completd-todo
 function edit2(index){
+  document.getElementById("new-task").value=completedArr[index].item;
   document.getElementById("new-task-btn").style.display="none";
   document.getElementById("edit-task-btn2").style.display="block";
   idx=index;
